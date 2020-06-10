@@ -1,0 +1,44 @@
+
+
+body{
+	background: green;
+	font-size: 15px;
+	color: white;
+}
+
+section{
+	
+	float: left;
+}
+aside{
+	
+	float: right;
+}
+.button{
+	text-align:center;
+}
+
+table, th,td{
+	border: 1px solid black;
+	border-collapse:separate;
+	border-spacing:5px;
+}
+
+td{
+	background-color:gray ;
+}
+.field{
+	width: 200px;
+	height: 200px;
+	background-color:BurlyWood;
+}
+.gekauft{
+	background-color:blue;
+	border-color: BurlyWood;
+}
+.selected{
+	border-color: red;
+	border-width:5px;
+	width: 190px;
+	height: 190px;
+}

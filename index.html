@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" href = "style.css" type = "text/css">
+		<script src ="js/script.js"></script>
+		<script src ="js/speicher.js"></script>
+		<script>start();</script>
+	</head>
+	
+	<body>
+		<section>
+			<table>
+				<tr>
+					<td onclick = "field_select(this);"  class = "field" id = "field_0">
+					</td>
+					<td onclick = "field_select(this);"class = "field" id = "field_1">
+					</td>
+					<td onclick = "field_select(this);"class = "field" id = "field_2">
+					</td>
+				</tr>
+				<tr>
+					<td onclick = "field_select(this);"class = "field" id = "field_3">
+					</td>
+					<td onclick = "field_select(this);"class = "field" id = "field_4">
+					</td>
+					<td onclick = "field_select(this);"class = "field" id = "field_5">
+					</td>
+				</tr>
+				<tr>
+					<td onclick = "field_select(this);"class = "field" id = "field_6">
+					</td>
+					<td onclick = "field_select(this);"class = "field" id = "field_7">
+					</td>
+					<td onclick = "field_select(this);"class = "field" id = "field_8">
+					</td>
+				</tr>
+			</table>
+		</section>
+		<aside>
+			<table>
+				<tr>
+					<td >
+						<input readonly type = "text" value = "Clock" size = "4">
+						<input readonly type = "text" id = "clock_value" value = "" size = "5">
+						<input readonly type = "text" id = "gold" value = "" size = "5">
+						<input readonly type = "text" id = "debug_3" value = "" size = "5">
+						<input readonly type = "text" id = "debug_4" value = "" size = "5">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input readonly class = "button" id = "b_kaufen" value = "Kaufen" onclick = "kaufen();">
+						<input readonly class = "button" id = "b_verkaufen" value = "Verkaufen">
+					</td>
+				</tr>
+				<tr>
+					<td >
+						<input readonly type = "text" id = "debug" value = "test">
+						<input readonly type = "text" id = "debug_1" value = "">
+					</td>
+				</tr>
+			</table>
+		</aside>
+	</body>
+	
+</html>
