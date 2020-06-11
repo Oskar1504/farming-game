@@ -1,3 +1,4 @@
+
 function start(){
 
 	var debug =  document.getElementById("debug");
@@ -5,20 +6,50 @@ function start(){
 	var debug_2 =  document.getElementById("debug_2");
 	var debug_3 =  document.getElementById("debug_3");
 	var debug_4 =  document.getElementById("debug_4");
+	var debug_5 =  document.getElementById("debug_5");
+	var debug_6 =  document.getElementById("debug_6");
+	var debug_7 =  document.getElementById("debug_7");
+	var debug_8 =  document.getElementById("debug_8");
+	var debug_9 =  document.getElementById("debug_9");
+	var debug_10 =  document.getElementById("debug_10");
 	
+	
+	
+	arraytest();
 	clock();
-	
-	
 	
 }
 
-var fields = document.getElementsByClassName("field");
+function create_field(id_nummer) {
+  return {
+	 "id":"field_"+id_nummer,
+	 "data":{
+		"preis":id_nummer*100,
+		"fruit":{
+			"preis":0,
+			"wert":0,
+			"id":"none"
+		}
+	 }
+	};
+};
+
+var alle_felder = document.getElementsByClassName("field");
 var selected_field = "none";
 
 var clock_value = 0,
     gold = 100;
-	
-	
+
+var test = 0;
+
+
+function arraytest(){
+	for(var i =0;i<=9;i++){
+		var id_nummer = fields.length;
+		fields.push(create_field(id_nummer));
+	}
+}
+
 function clock(){
 	setTimeout(function(){
 		//zählt clock hoch
@@ -33,45 +64,20 @@ function clock(){
 
 function field_select(field){
 	
-	for(var i = 0; i< fields.length; i++){
-		fields[i].classList.remove("selected");
+	for(var i = 0; i< alle_felder.length; i++){
+		alle_felder[i].classList.remove("selected");
 	}
+	
 	field.classList.add("selected");
-	selected_field = field.id;
-	
-	debug.value = field.id;
-	debug_1.value = selected_field;
-	debug_3.value = getjson(field).preis;
-	
-	
-	
-	
-}
-
-function getjson(field){
-	
-	var output = "none";
-	if(field.id == "field_0"){
-		output = field_0;
-	}else if(field.id =="field_1"){
-		output = field_1;
-	}else if(field.id =="field_2"){
-		output = field_2;
-	}else if(field.id =="field_3"){
-		output = field_3;
-	}else if(field.id =="field_4"){
-		output = field_4;
-	}else if(field.id =="field_5"){
-		output = field_5;
-	}else if(field.id =="field_6"){
-		output = field_6;
-	}else if(field.id =="field_7"){
-		output = field_7;
-	}else if(field.id =="field_8"){
-		output = field_8;
+	for(var i = 0; i< alle_felder.length; i++){
+		if(alle_felder[i].classList.contains("selected") == true){
+			test = i;
+		}
 	}
 	
-	return output;
+	debug.value = fields[test].id;
+	debug_1.value = fields[test].id;
+	debug_3.value = fields[test].data.preis;	
 }
 
 function kaufen(){
