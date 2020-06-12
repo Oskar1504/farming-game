@@ -103,7 +103,7 @@ function shop_select_item(item){
 
 function plant(){
 	
-	if(document.getElementById(selected_field).classList.contains("locked") == false){
+	if(document.getElementById(selected_field).classList.contains("locked") == false&&fields[selected_field_array_index].fruit.id == "none"){
 		
 		//stores fruit values into select field storage
 		fields[selected_field_array_index].fruit.id = jsonPathToValue(fruit, selected_shop_item +".id");
@@ -111,23 +111,26 @@ function plant(){
 		fields[selected_field_array_index].fruit.wert = jsonPathToValue(fruit, selected_shop_item +".wert");
 		fields[selected_field_array_index].fruit.growduration = jsonPathToValue(fruit, selected_shop_item +".growduration");
 		// removes cost from gold
-		gold = gold-fields[selected_field_array_index].fruit.preis;
+		if(gold >=fields[selected_field_array_index].fruit.preis){
+			gold = gold-fields[selected_field_array_index].fruit.preis;
+		}
 		//stores clock_value
 		fields[selected_field_array_index].growstart = clock_value;
 		
-		console.log("planted");
 	}else{
-		alert("You cant plant on locked feilds.");
+		alert("You cant plant on locked fields.\n Or on already planted Fields.");
 	}
 	show_details();
 }
 
 function kaufen(){
 
-	if(gold >= fields[selected_field_array_index].preis){
+	if(gold >= fields[selected_field_array_index].preis && document.getElementById(selected_field).classList.contains("locked") ==true  ){
 		gold = gold-fields[selected_field_array_index].preis;
 		document.getElementById(selected_field).classList.remove("locked");
 		document.getElementById(selected_field).classList.add("gekauft");
+	}else{
+		alert("Field is already your's.");
 	}
 	
 }
@@ -145,6 +148,7 @@ function ernten(){
 		fields[selected_field_array_index].fruit.preis = 0;
 		fields[selected_field_array_index].fruit.wert = 0;
 		fields[selected_field_array_index].fruit.growduration = 0;
+		show_details();
 	}
 }
 
