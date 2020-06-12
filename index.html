@@ -10,75 +10,131 @@
 	
 	<body>
 		<section>
-			<table>
-				<tr>
-					<td onclick = "field_select(this);"  class = "field" id = "field_0">
-					</td>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_1">
-					</td>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_2">
-					</td>
-				</tr>
-				<tr>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_3">
-					</td>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_4">
-					</td>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_5">
-					</td>
-				</tr>
-				<tr>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_6">
-					</td>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_7">
-					</td>
-					<td onclick = "field_select(this);"class = "field locked" id = "field_8">
-					</td>
-				</tr>
-			</table>
+			<div class = "spielfeld">
+				<table>
+					<tr>
+						<td onclick = "field_select(this);"class = "field selected" id = "field_0"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_1"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_2"></td>
+					</tr>
+					<tr>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_3"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_4"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_5"></td>
+					</tr>
+					<tr>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_6"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_7"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_8"></td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<p>
+					<input type = "text" id = "text_detail_checkbox"  value = "Details" size = "2">
+					<input type = "checkbox" id = "detail_checkbox" checked onchange = "change_opasity('detail_table');">
+				</p>
+				<table id = "detail_table" class = "">
+					<tr>
+						<td><input disabled type = "text" id = "text_detail_field_id" value = "Field id" size = "8"> </td>
+						<td><input disabled type = "text" id = "text_detail_field_preis" value = "Field Preis" size = "8"> </td>
+						<td><input disabled type = "text" id = "text_detail_field_fruit" value = "Field fruit" size = "8"> </td>
+						<td><input disabled type = "text" id = "text_detail_field_growstart" value = "Field Growstart" size = "10"> </td>
+					</tr>
+					<tr>
+						<td><input readonly type = "text" id = "detail_field_id" value = "field_id" size = "8"> </td>
+						<td><input readonly type = "text" id = "detail_field_preis" value = "field_preis" size = "8"> </td>
+						<td><input readonly type = "text" id = "detail_field_fruit" value = "field_fruit" size = "8"> </td>
+						<td><input readonly type = "text" id = "detail_field_growstart" value = "field_growstart" size = "10"> </td>
+					</tr>
+					<tr>
+						<td><input disabled type = "text" id = "text_detail_fruit_id" value = "Fruit id" size = "8"> </td>
+						<td><input disabled type = "text" id = "text_detail_fruit_preis" value = "Fruit Preis" size = "8"> </td>
+						<td><input disabled type = "text" id = "text_detail_fruit_wert" value = "Fruit Wert" size = "8"> </td>
+						<td><input disabled type = "text" id = "text_vdetail_fruit_growduration" value = "Fruit growduration" size = "10"> </td>
+					</tr>
+					<tr>
+						<td><input readonly type = "text" id = "detail_fruit_id" value = "fruit_id" size = "8"> </td>
+						<td><input readonly type = "text" id = "detail_fruit_preis" value = "fruit_preis" size = "8"> </td>
+						<td><input readonly type = "text" id = "detail_fruit_wert" value = "fruit_wert" size = "8"> </td>
+						<td><input readonly type = "text" id = "detail_fruit_growduration" value = "fruit_growduration" size = "10"> </td>
+					</tr>
+				</table>
+			</div>
 		</section>
 		<aside>
 			<table >
 				<tr>
-					<td ><input readonly type = "text" value = "Clock" size = "5"></td>
-					<td ><input readonly type = "text" id = "clock_value" value = "" size = "6"></td>
-					<td ><input readonly type = "text" id = "gold" value = "" size = "5"></td>
-					<td ><input readonly type = "text" id = "array_index" value = "" size = "5"></td>
-					<td ><input readonly type = "text" id = "preis" value = "" size = "5"></td>
+					<td ><input readonly type = "text" value = "Clock" size = "7"></td>
+					<td ><input readonly type = "text" id = "clock_value" size = "7" ></td>
+					<td ><input readonly type = "text" id = "gold" value = "" size = "7"></td>
+					<td ><input readonly type = "text" id = "array_index" value = "" size = "7"></td>
+					<td ><input readonly type = "text" id = "preis" value = "" size = "7"></td>
 				
 				</tr>
 				<tr>
 					<td>
-						<center><button onclick = "kaufen();" id = "b_kaufen">Kaufen</button></center>
+						<center><button onclick = "kaufen();" id = "b_kaufen"> Feld Kaufen</button></center>
 						
 					</td>
 					<td>
-						<center><button onclick = "verkaufen();" id = "b_verkaufen">Verkaufen</button></center>
+						<center><button onclick = "ernten();" id = "b_verkaufen">Ernten</button></center>
 					</td>
 					<td>
-						<center><button onclick = "fruit();" id = "b_test">Fruit info</button></center>
+						<center><button onclick = "change_opasity('shop_table');change_opasity('shop_table_info');" id = "b_shop">Shop</button></center>
 					</td>
-					<td>
-						<center><button onclick = "pflanze_salat();" id = "b_sa">Pflanze slaat</button></center>
-					</td>
-					<td>
-						<center><button onclick = "pflanze_mohre();" id = "b_saaa">Pflanze möhre</button></center>
-					</td>
-				</tr>
-				<tr>
-					<td ><input readonly type = "text" id = "fruit_id" size = "5"></td>
-					<td ><input readonly type = "text" id = "fruit_preis" value = "" size = "6"></td>
-					<td ><input readonly type = "text" id = "fruit_wert" value = "" size = "6"></td>
-				
-				</tr>
-				<tr>
-					<td ><input readonly type = "text" id = "ffruit_id" size = "5"></td>
-					<td ><input readonly type = "text" id = "ffruit_preis" value = "" size = "6"></td>
-					<td ><input readonly type = "text" id = "ffruit_wert" value = "" size = "6"></td>
-				
 				</tr>
 			</table>
+			<br>
+			<textarea readonly id = "shop_table_info" rows= "10" cols= "20" autofocus class = "shop_info shop_table ">
+				Select an Plant to plant it on the selected field
+			</textarea>
+			<table id = "shop_table" class = "">
+				<tr>
+					<td id = "shop_menu_button_0"  onclick = "shop_plants();"  >
+						<input class = "button blue" disabled value = "Plants" size = "8">
+					</td>
+					<td id = "shop_menu_button_1" onclick = "shop_upgrades();">
+						<input  class = "button blue" disabled value = "Upgrades" size = "8">
+					</td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td id = "shop_button_0"  class = "shop_button salat" onclick = "shop_select_item(this);">
+						<input readonly value = "Salat" size = "8">
+					</td>
+					<td id = "shop_button_1" class = "shop_button mohre" onclick = "shop_select_item(this);">
+						<input readonly value = "Moehre" size = "8">
+					</td>
+				</tr>
+				<tr>
+					<td id = "shop_button_2" class = "shop_button erbse"  onclick = "shop_select_item(this);">
+						<input readonly value = "Erbse"  size = "8">
+					</td>
+					<td id = "shop_button_3" class = "shop_button aubergine" onclick = "shop_select_item(this);">
+						<input readonly value = "Aubergine"size = "8">
+					</td>
+				</tr>
+				<tr>
+					<td id = "shop_button_4" class = "shop_button kurbis"  onclick = "shop_select_item(this);">
+						<input readonly value = "Kürbis" size = "8">
+					</td>
+					<td id = "shop_button_5" class = "shop_button weizen" onclick = "shop_select_item(this);">
+						<input readonly value = "Weizen" size = "8">
+					</td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td id = "shop_menu_button_3"  onclick = "plant(selected_shop_item);"  >
+						<input disabled class = "button green" value = "Plant" size = "8">
+					</td>
+					<td >
+						<input disabled value = "" size = "8">
+					</td>
+				</tr>
+			</table>
+					
 		</aside>
 	</body>
-	
+	<script>show_details();</script>
 </html>
