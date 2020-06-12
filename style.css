@@ -42,3 +42,15 @@ td{
 	width: 190px;
 	height: 190px;
 }
+.locked{
+	background-position:center;
+	background-image: url("bilder/lock.png");
+}
+
+.show{
+	opacity: 1;
+}
+
+.hide{
+	opacity: 0;
+}

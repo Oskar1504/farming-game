@@ -14,69 +14,68 @@
 				<tr>
 					<td onclick = "field_select(this);"  class = "field" id = "field_0">
 					</td>
-					<td onclick = "field_select(this);"class = "field" id = "field_1">
+					<td onclick = "field_select(this);"class = "field locked" id = "field_1">
 					</td>
-					<td onclick = "field_select(this);"class = "field" id = "field_2">
-					</td>
-				</tr>
-				<tr>
-					<td onclick = "field_select(this);"class = "field" id = "field_3">
-					</td>
-					<td onclick = "field_select(this);"class = "field" id = "field_4">
-					</td>
-					<td onclick = "field_select(this);"class = "field" id = "field_5">
+					<td onclick = "field_select(this);"class = "field locked" id = "field_2">
 					</td>
 				</tr>
 				<tr>
-					<td onclick = "field_select(this);"class = "field" id = "field_6">
+					<td onclick = "field_select(this);"class = "field locked" id = "field_3">
 					</td>
-					<td onclick = "field_select(this);"class = "field" id = "field_7">
+					<td onclick = "field_select(this);"class = "field locked" id = "field_4">
 					</td>
-					<td onclick = "field_select(this);"class = "field" id = "field_8">
+					<td onclick = "field_select(this);"class = "field locked" id = "field_5">
+					</td>
+				</tr>
+				<tr>
+					<td onclick = "field_select(this);"class = "field locked" id = "field_6">
+					</td>
+					<td onclick = "field_select(this);"class = "field locked" id = "field_7">
+					</td>
+					<td onclick = "field_select(this);"class = "field locked" id = "field_8">
 					</td>
 				</tr>
 			</table>
 		</section>
 		<aside>
-			<table>
+			<table >
 				<tr>
-					<td >
-						<input readonly type = "text" value = "Clock" size = "4">
-						<input readonly type = "text" id = "clock_value" value = "" size = "5">
-						<input readonly type = "text" id = "gold" value = "" size = "5">
-						<input readonly type = "text" id = "debug_3" value = "" size = "5">
-						<input readonly type = "text" id = "debug_4" value = "" size = "5">
-					</td>
+					<td ><input readonly type = "text" value = "Clock" size = "5"></td>
+					<td ><input readonly type = "text" id = "clock_value" value = "" size = "6"></td>
+					<td ><input readonly type = "text" id = "gold" value = "" size = "5"></td>
+					<td ><input readonly type = "text" id = "array_index" value = "" size = "5"></td>
+					<td ><input readonly type = "text" id = "preis" value = "" size = "5"></td>
+				
 				</tr>
 				<tr>
 					<td>
-						<input readonly class = "button" id = "b_kaufen" value = "Kaufen" onclick = "kaufen();">
-						<input readonly class = "button" id = "b_verkaufen" value = "Verkaufen">
+						<center><button onclick = "kaufen();" id = "b_kaufen">Kaufen</button></center>
+						
+					</td>
+					<td>
+						<center><button onclick = "verkaufen();" id = "b_verkaufen">Verkaufen</button></center>
+					</td>
+					<td>
+						<center><button onclick = "fruit();" id = "b_test">Fruit info</button></center>
+					</td>
+					<td>
+						<center><button onclick = "pflanze_salat();" id = "b_sa">Pflanze slaat</button></center>
+					</td>
+					<td>
+						<center><button onclick = "pflanze_mohre();" id = "b_saaa">Pflanze möhre</button></center>
 					</td>
 				</tr>
 				<tr>
-					<td >
-						<input readonly type = "text" id = "debug" value = "test">
-						<input readonly type = "text" id = "debug_1" value = "">
-					</td>
+					<td ><input readonly type = "text" id = "fruit_id" size = "5"></td>
+					<td ><input readonly type = "text" id = "fruit_preis" value = "" size = "6"></td>
+					<td ><input readonly type = "text" id = "fruit_wert" value = "" size = "6"></td>
+				
 				</tr>
 				<tr>
-					<td >
-						<input readonly type = "text" id = "debug_5" value = "debug_5">
-						<input readonly type = "text" id = "debug_6" value = "debug_6">
-					</td>
-				</tr>
-				<tr>
-					<td >
-						<input readonly type = "text" id = "debug_7" value = "debug_7">
-						<input readonly type = "text" id = "debug_8" value = "debug_8">
-					</td>
-				</tr>
-				<tr>
-					<td >
-						<input readonly type = "text" id = "debug_9" value = "debug_7">
-						<input readonly type = "text" id = "debug_10" value = "debug_8">
-					</td>
+					<td ><input readonly type = "text" id = "ffruit_id" size = "5"></td>
+					<td ><input readonly type = "text" id = "ffruit_preis" value = "" size = "6"></td>
+					<td ><input readonly type = "text" id = "ffruit_wert" value = "" size = "6"></td>
+				
 				</tr>
 			</table>
 		</aside>
