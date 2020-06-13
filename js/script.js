@@ -39,6 +39,19 @@ function arraytest(){
 	}
 }
 
+function store(){
+	localStorage.setItem('salat',JSON.stringify(salat));
+}
+
+function show(){
+	
+	ausgabe = JSON.parse(localStorage.getItem('salat'));
+	
+	console.log(ausgabe);
+	console.log(ausgabe.wert);
+	alert(ausgabe.id + " " +ausgabe.preis);
+}
+
 function clock(){
 	setTimeout(function(){
 		// checks if harvestable
