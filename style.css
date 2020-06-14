@@ -36,6 +36,12 @@ table, th,td{
 	outline: 5px solid Chartreuse;
 	outline-offset:-10px;
 }
+.Salat{
+	background-color:red;
+}
+.Moehre{
+	background-color:Orange;
+}
 .selected{
 	border-color: red;
 	border-width:5px;
@@ -49,6 +55,10 @@ table, th,td{
 .shop_info{
 	float: right;
 }
+.field_info{
+	float: right;
+}
+
 
 .hide{
 	opacity: 0;
