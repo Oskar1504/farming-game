@@ -120,7 +120,7 @@ function shop_select_item(item){
 
 function plant(){
 	
-	if(document.getElementById(selected_field).classList.contains("locked") == false&&fields[selected_field_array_index].fruit.id == "none"){
+	if(document.getElementById(selected_field).classList.contains("locked") == false&&fields[selected_field_array_index].fruit.id == "none"&&gold >=fields[selected_field_array_index].fruit.preis){
 		
 		//stores fruit values into select field storage
 		fields[selected_field_array_index].fruit.id = jsonPathToValue(fruit, selected_shop_item +".id");
@@ -128,11 +128,11 @@ function plant(){
 		fields[selected_field_array_index].fruit.wert = jsonPathToValue(fruit, selected_shop_item +".wert");
 		fields[selected_field_array_index].fruit.growduration = jsonPathToValue(fruit, selected_shop_item +".growduration");
 		// removes cost from gold
-		if(gold >=fields[selected_field_array_index].fruit.preis){
-			gold = gold-fields[selected_field_array_index].fruit.preis;
-		}
+		gold = gold-fields[selected_field_array_index].fruit.preis;
 		//stores clock_value
 		fields[selected_field_array_index].growstart = clock_value;
+		//add class to render
+		document.getElementById(selected_field).classList.add(fields[selected_field_array_index].fruit.id);
 		
 	}else{
 		alert("You cant plant on locked fields.\n Or on already planted Fields.");
@@ -157,7 +157,9 @@ function kaufen(){
 function ernten(){
 	if(document.getElementById(selected_field).classList.contains("harvestable") == true){
 		//removes harvestable grafik
-		document.getElementById(selected_field).classList.remove("harvestable");
+		document.getElementById(selected_field).className = '';
+		document.getElementById(selected_field).classList.add("selected");
+		document.getElementById(selected_field).classList.add("field");
 		//adds gold
 		gold = gold + fields[selected_field_array_index].fruit.wert;
 		//resets fields fruit values
@@ -180,16 +182,9 @@ function show_values(){
 
 function show_details(){
 	if(document.getElementById("detail_checkbox").checked == true){
-		document.getElementById("detail_field_id").value = fields[selected_field_array_index].id;
-		document.getElementById("detail_field_preis").value = fields[selected_field_array_index].preis;
-		document.getElementById("detail_field_fruit").value = fields[selected_field_array_index].fruit.id;
-		document.getElementById("detail_field_growstart").value = fields[selected_field_array_index].growstart;
-		
-		document.getElementById("detail_fruit_id").value = fields[selected_field_array_index].fruit.id;
-		document.getElementById("detail_fruit_preis").value = fields[selected_field_array_index].fruit.preis;
-		document.getElementById("detail_fruit_wert").value = fields[selected_field_array_index].fruit.wert;
-		document.getElementById("detail_fruit_growduration").value = fields[selected_field_array_index].fruit.growduration;
+		document.getElementById("field_info").innerHTML ="Field Info \n"+"Field id: "+fields[selected_field_array_index].id + "\nField price:" + fields[selected_field_array_index].preis +"\nField fruit: " +fields[selected_field_array_index].fruit.id +"\nGrowstart: " + fields[selected_field_array_index].growstart ;
 	}
+	
 }
 
 
