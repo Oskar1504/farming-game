@@ -40,11 +40,10 @@
 		<aside>
 			<table >
 				<tr>
-					<td ><input readonly type = "text" value = "Clock" size = "7"></td>
-					<td ><input readonly type = "text" id = "clock_value" size = "7" ></td>
-					<td ><input readonly type = "text" id = "gold" value = "" size = "7"></td>
-					<td ><input readonly type = "text" id = "autosave_last" value = "Autosave:" size = "7"></td>
-					<td ><input disabled type  ="text" value = "" size = "7"></td>
+					<td ><input readonly type = "text" id = "clock_value" value = "Clock:" size = "10"></td>
+					<td ><input readonly type = "text" id = "gold" size = "10" ></td>
+					<td ><input readonly type = "text" id = "autosave_last" value = "Autosave:" size = "10"></td>
+					<td ></td>
 				
 				</tr>
 				<tr>
@@ -60,9 +59,6 @@
 					</td>
 					<td>
 						<center><button onclick = "change_opasity('settings');" id = "">Settings</button></center>
-					</td>
-					<td>
-					<input disabled type  ="text" value = "" size = "7">
 					</td>
 				</tr>
 			</table>
@@ -119,7 +115,7 @@
 				<tr>
 					<td ><input readonly type = "text" value = "Autosave" size = "7"></td>
 					<td ><input readonly type = "text" id = "Autosave delay" size = "11" value = "Autosave delay" ></td>
-					<td onclick = "save_game();"  ><input readonly class = "button dunkelblau" type = "text" value = "Save game" size = "7"></td>
+					<td onclick = "save_game();"  ><input readonly class = "button dunkelblau" type = "text" value = "Save game" size = "14"></td>
 					<td onclick = "load_game();"><input readonly class = "button dunkelblau"  type = "text" value = "Load game" size = "7"></td>
 				</tr>
 				<tr>
@@ -132,4 +128,5 @@
 		</aside>
 	</body>
 	<script>show_details();</script>
+	<script>load_game_frage();</script>
 </html>

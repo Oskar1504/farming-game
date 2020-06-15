@@ -1,10 +1,4 @@
 
-function start(){
-	
-	arraytest();
-	clock();
-}
-
 function create_field(id_nummer) {
   return {
 	 "id":"field_"+id_nummer,
@@ -28,10 +22,28 @@ var alle_shop_button = document.getElementsByClassName("shop_button");
 var selected_shop_item = "none";
 
 var clock_value = 0,
-	autosave_last = 0,
-	autosave_delay =50,
+	autosave_last = 50,
+	autosave_delay =60,
     gold = 1000;
 
+
+function start(){
+	
+	arraytest();
+	clock();
+	
+	
+}
+function load_game_frage(){
+	if(localStorage.getItem('clock_value')){
+		r = confirm("Do you want to load last savegame?");
+		if(r == true){
+			load_game();
+		}else{
+			alert("No savegame loaded. \nYou can load savegame in the setting menu.")
+		}
+	}
+}
 
 
 function arraytest(){
@@ -53,7 +65,7 @@ function clock(){
 		if(autosave_checkbox.checked == true){
 			if(clock_value>= autosave_last+autosave_delay){
 				autosave();
-				console.log("autosave um: "+clock_value);
+				
 			}
 		}
 		//zählt clock hoch
@@ -106,6 +118,7 @@ function field_select(field){
 	show_values();
 	show_details();
 }
+
 
 function shop_select_item(item){
 	
@@ -180,8 +193,8 @@ function ernten(){
 
 function show_values(){
 	//zeigt alle werte 
-	document.getElementById("clock_value").value = clock_value;
-	document.getElementById("gold").value = gold;
+	document.getElementById("clock_value").value = "Clock: " + clock_value;
+	document.getElementById("gold").value = "Gold: " + gold;
 	document.getElementById("autosave_last").value = "Autosave: " + autosave_last;
 	
 }
