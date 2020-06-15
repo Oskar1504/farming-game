@@ -223,10 +223,12 @@ function save_game(){
 	localStorage.setItem('gold',gold);
 	localStorage.setItem('clock_value',clock_value);
 	localStorage.setItem('fields',JSON.stringify(fields));
+	alert("Saved game");
 }
 
 function remove_game(){
 	localStorage.clear();
+	alert("Removed save game.");
 }
 
 function load_game(){
