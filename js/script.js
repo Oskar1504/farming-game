@@ -32,6 +32,7 @@ function start(){
 	arraytest();
 	clock();
 	
+	autosave_delay =60;
 	
 }
 function load_game_frage(){
