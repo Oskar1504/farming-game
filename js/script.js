@@ -22,7 +22,7 @@ var alle_shop_button = document.getElementsByClassName("shop_button");
 var selected_shop_item = "none";
 
 var clock_value = 0,
-	autosave_last = 50,
+	autosave_last = 10,
 	autosave_delay =60,
     gold = 1000;
 
@@ -236,8 +236,12 @@ function save_game(){
 	localStorage.setItem('gold',gold);
 	localStorage.setItem('clock_value',clock_value);
 	localStorage.setItem('fields',JSON.stringify(fields));
-	alert("Saved game");
+	
 }
+function save_game_alert(){
+	alert("Saved game.");
+}
+
 
 function remove_game(){
 	localStorage.clear();
