@@ -241,7 +241,9 @@ function save_game(){
 	localStorage.setItem('clock_value',clock_value);
 	localStorage.setItem('fields',JSON.stringify(fields));
 	
+
 }
+
 function save_game_alert(){
 	alert("Saved game.");
 }
