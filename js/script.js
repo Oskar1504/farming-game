@@ -36,7 +36,7 @@ function start(){
 }
 function load_game_frage(){
 	if(localStorage.getItem('clock_value')){
-		r = confirm("Do you want to load last savegame?");
+		var r = confirm("Do you want to load last savegame?");
 		if(r == true){
 			load_game();
 		}else{
