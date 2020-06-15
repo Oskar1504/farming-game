@@ -11,12 +11,16 @@
 	<body>
 		<section>
 			<div class = "spielfeld">
-				<textarea readonly id = "field_info" class = "field_info" rows = "10" cols = "18">Field Info
-					
-				</textarea>
+				<p class = "field_info">
+					<input type = "text" id = "text_detail_checkbox"   value = "Details" size = "2">
+					<input type = "checkbox" id = "detail_checkbox" checked  onchange = "change_opasity('field_info');">
+					<br><br>		
+					<textarea readonly id = "field_info" class = "field_info"rows = "10" cols = "18">Field Info
+					</textarea>
+				</p>
 				<table>
 					<tr>
-						<td onclick = "field_select(this);"class = "field selected" id = "field_0"> </td>
+						<td onclick = "field_select(this);"class = "field selected" id = "field_0"></td>
 						<td onclick = "field_select(this);"class = "field locked" id = "field_1"> </td>
 						<td onclick = "field_select(this);"class = "field locked" id = "field_2"> </td>
 					</tr>
@@ -32,12 +36,6 @@
 					</tr>
 				</table>
 			</div>
-			<div>
-				<p>
-					<input type = "text" id = "text_detail_checkbox"  value = "Details" size = "2">
-					<input type = "checkbox" id = "detail_checkbox" checked onchange = "change_opasity('detail_table');change_opasity('field_info');">
-				</p>
-			</div>
 		</section>
 		<aside>
 			<table >
@@ -45,8 +43,8 @@
 					<td ><input readonly type = "text" value = "Clock" size = "7"></td>
 					<td ><input readonly type = "text" id = "clock_value" size = "7" ></td>
 					<td ><input readonly type = "text" id = "gold" value = "" size = "7"></td>
-					<td ><input readonly type = "text" id = "array_index" value = "" size = "7"></td>
-					<td ><input readonly type = "text" id = "preis" value = "" size = "7"></td>
+					<td ><input readonly type = "text" id = "autosave_last" value = "Autosave:" size = "7"></td>
+					<td ><input disabled type  ="text" value = "" size = "7"></td>
 				
 				</tr>
 				<tr>
@@ -61,10 +59,10 @@
 						<center><button onclick = "change_opasity('shop_table');change_opasity('shop_table_info');" id = "b_shop">Shop</button></center>
 					</td>
 					<td>
-						<center><button onclick = "store();" id = "b_cookie">Store cookie</button></center>
+						<center><button onclick = "change_opasity('settings');" id = "">Settings</button></center>
 					</td>
 					<td>
-						<center><button onclick = "show();" id = "sss">show cookie</button></center>
+					<input disabled type  ="text" value = "" size = "7">
 					</td>
 				</tr>
 			</table>
@@ -102,8 +100,8 @@
 					<td id = "shop_button_4" class = "shop_button kurbis"  onclick = "shop_select_item(this);">
 						<input readonly value = "Kuerbis" size = "8">
 					</td>
-					<td id = "shop_button_5" class = "shop_button weizen" onclick = "shop_select_item(this);">
-						<input readonly value = "Weizen" size = "8">
+					<td id = "shop_button_5" class = "shop_button tomate" onclick = "shop_select_item(this);">
+						<input readonly value = "Tomate" size = "8">
 					</td>
 				</tr>
 				<tr></tr>
@@ -116,7 +114,21 @@
 					</td>
 				</tr>
 			</table>
+			<br>
+			<table id = "settings" class = "hide">
+				<tr>
+					<td ><input readonly type = "text" value = "Autosave" size = "7"></td>
+					<td ><input readonly type = "text" id = "Autosave delay" size = "11" value = "Autosave delay" ></td>
+					<td onclick = "save_game();"  ><input readonly class = "button dunkelblau" type = "text" value = "Save game" size = "7"></td>
+					<td onclick = "load_game();"><input readonly class = "button dunkelblau"  type = "text" value = "Load game" size = "7"></td>
+				</tr>
+				<tr>
+					<td><input type = "checkbox" id = "autosave_checkbox" checked ></td>
+					<td><input type = "text" id = "autosave_delay" value = "50" onchange = "autosave_delay_f(this);" size = "11"></td>
+					<td onclick = "remove_game();"><input readonly class = "button dunkelblau"  type = "text" value = "Delete Save game" size = "14"></td>
 					
+				</tr>
+			</table>
 		</aside>
 	</body>
 	<script>show_details();</script>

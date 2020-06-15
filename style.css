@@ -25,9 +25,11 @@ table, th,td{
 .field{
 	width: 190px;
 	height: 190px;
-	background-color:BurlyWood;
 	border-width:5px;
 	border-color:BurlyWood;
+	background-position:center;
+	background-image: url("bilder/field.png");
+	
 }
 
 .gekauft{
@@ -36,12 +38,6 @@ table, th,td{
 	outline: 5px solid Chartreuse;
 	outline-offset:-10px;
 }
-.Salat{
-	background-color:red;
-}
-.Moehre{
-	background-color:Orange;
-}
 .selected{
 	border-color: red;
 	border-width:5px;
@@ -49,7 +45,33 @@ table, th,td{
 
 .locked{
 	background-position:center;
-	background-image: url("bilder/lock.png");
+	background-image: url("bilder/lock.png"),url("bilder/field.png");
+}
+
+
+.Salat{
+	background-position:center;
+	background-image: url("bilder/salat.png"),url("bilder/field.png");
+}
+.Moehre{
+	background-position:center;
+	background-image: url("bilder/mohre.png"),url("bilder/field.png");
+}
+.Erbse{
+	background-position:center;
+	background-image: url("bilder/erbse.png"),url("bilder/field.png");
+}
+.Aubergine{
+	background-position:center;
+	background-image: url("bilder/aubergine.png"),url("bilder/field.png");
+}
+.Kuerbis{
+	background-position:center;
+	background-image: url("bilder/kurbis.png"),url("bilder/field.png");
+}
+.Tomate{
+	background-position:center;
+	background-image: url("bilder/tomate.png"),url("bilder/field.png");
 }
 
 .shop_info{
@@ -69,12 +91,12 @@ table, th,td{
 	font-size: 15px;
 	font-weight: bold;
 	text-align:center;
+	background-color:gray;
 }
 
 .green{
 	background-color:Chartreuse;
 }
-
 .blue{
 	background-color:DarkSeaGreen;
 }

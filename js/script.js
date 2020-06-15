@@ -28,6 +28,8 @@ var alle_shop_button = document.getElementsByClassName("shop_button");
 var selected_shop_item = "none";
 
 var clock_value = 0,
+	autosave_last = 0,
+	autosave_delay =50,
     gold = 1000;
 
 
@@ -39,27 +41,21 @@ function arraytest(){
 	}
 }
 
-function store(){
-	localStorage.setItem('salat',JSON.stringify(salat));
-	localStorage.setItem('fields',JSON.stringify(fields));
-}
-
-function show(){
-	
-	ausgabe = JSON.parse(localStorage.getItem('salat'));
-	ausgabe1 = JSON.parse(localStorage.getItem('fields'));
-	
-	console.log(ausgabe);
-	console.log(ausgabe.wert);
-	console.log(ausgabe1[0].fruit.id);
-	console.log(ausgabe1[0].id);
-	alert(ausgabe.id + " " +ausgabe.preis);
+function autosave_delay_f(smeng){
+	autosave_delay  = parseInt(smeng.value);
 }
 
 function clock(){
 	setTimeout(function(){
 		// checks if harvestable
 		check_harvestable();
+		//autosave
+		if(autosave_checkbox.checked == true){
+			if(clock_value>= autosave_last+autosave_delay){
+				autosave();
+				console.log("autosave um: "+clock_value);
+			}
+		}
 		//zählt clock hoch
 		clock_value++;
 		//zeigtr alle values
@@ -70,6 +66,11 @@ function clock(){
 	},1000);
 }
 
+function autosave(){
+	save_game();
+	autosave_last = clock_value;
+}
+
 function check_harvestable(){
 	for(var i = 0; i< alle_felder.length; i++){
 		
@@ -77,7 +78,7 @@ function check_harvestable(){
 			
 			if(alle_felder[i].classList.contains("harvestable")==false&&fields[i].fruit.id != "none"){
 			alle_felder[i].classList.add("harvestable");
-			console.log(fields[i].id + " harvestable");
+			
 			
 			}
 		}
@@ -120,7 +121,7 @@ function shop_select_item(item){
 
 function plant(){
 	
-	if(document.getElementById(selected_field).classList.contains("locked") == false&&fields[selected_field_array_index].fruit.id == "none"&&gold >=fields[selected_field_array_index].fruit.preis){
+	if(document.getElementById(selected_field).classList.contains("locked") == false&&fields[selected_field_array_index].fruit.id == "none"&&gold >=jsonPathToValue(fruit, selected_shop_item +".preis")){
 		
 		//stores fruit values into select field storage
 		fields[selected_field_array_index].fruit.id = jsonPathToValue(fruit, selected_shop_item +".id");
@@ -134,8 +135,12 @@ function plant(){
 		//add class to render
 		document.getElementById(selected_field).classList.add(fields[selected_field_array_index].fruit.id);
 		
-	}else{
-		alert("You cant plant on locked fields.\n Or on already planted Fields.");
+	}else if(document.getElementById(selected_field).classList.contains("locked") == true){
+		alert("You cant plant on locked fields.");
+	}else if(fields[selected_field_array_index].fruit.id != "none"){
+		alert("You cant plant on already used fields.");
+	}else if(gold <=jsonPathToValue(fruit, selected_shop_item +".preis")){
+		alert("You don't have enough gold.");
 	}
 	show_details();
 }
@@ -146,13 +151,13 @@ function kaufen(){
 		gold = gold-fields[selected_field_array_index].preis;
 		document.getElementById(selected_field).classList.remove("locked");
 		document.getElementById(selected_field).classList.add("gekauft");
-	}else{
+	}else if(document.getElementById(selected_field).classList.contains("locked") ==false ){
 		alert("Field is already your's.");
+	}else if(gold <= fields[selected_field_array_index].preis ){
+		alert("U dont have enough gold..");
 	}
 	
 }
-
-
 
 function ernten(){
 	if(document.getElementById(selected_field).classList.contains("harvestable") == true){
@@ -161,13 +166,15 @@ function ernten(){
 		document.getElementById(selected_field).classList.add("selected");
 		document.getElementById(selected_field).classList.add("field");
 		//adds gold
-		gold = gold + fields[selected_field_array_index].fruit.wert;
+		gold = gold + parseInt(fields[selected_field_array_index].fruit.wert);
 		//resets fields fruit values
 		fields[selected_field_array_index].fruit.id = "none";
 		fields[selected_field_array_index].fruit.preis = 0;
 		fields[selected_field_array_index].fruit.wert = 0;
 		fields[selected_field_array_index].fruit.growduration = 0;
 		show_details();
+	}else if (document.getElementById(selected_field).classList.contains("harvestable") == false){
+		alert("Field already isn't harvestable.");
 	}
 }
 
@@ -175,14 +182,13 @@ function show_values(){
 	//zeigt alle werte 
 	document.getElementById("clock_value").value = clock_value;
 	document.getElementById("gold").value = gold;
-	document.getElementById("array_index").value = selected_field_array_index;
-	document.getElementById("preis").value = fields[selected_field_array_index].preis;
+	document.getElementById("autosave_last").value = "Autosave: " + autosave_last;
 	
 }
 
 function show_details(){
 	if(document.getElementById("detail_checkbox").checked == true){
-		document.getElementById("field_info").innerHTML ="Field Info \n"+"Field id: "+fields[selected_field_array_index].id + "\nField price:" + fields[selected_field_array_index].preis +"\nField fruit: " +fields[selected_field_array_index].fruit.id +"\nGrowstart: " + fields[selected_field_array_index].growstart ;
+		document.getElementById("field_info").innerHTML ="Field Info \n"+"Field id: "+fields[selected_field_array_index].id + "\nField price:" + fields[selected_field_array_index].preis +"\nField fruit: " +fields[selected_field_array_index].fruit.id+"\nFruit value: " +fields[selected_field_array_index].fruit.wert +"\nGrowstart: " + fields[selected_field_array_index].growstart +"\nHarvestable: " + (fields[selected_field_array_index].growstart+fields[selected_field_array_index].fruit.growduration) ;
 	}
 	
 }
@@ -209,6 +215,45 @@ function debug(output){
 
 function shop_table_info(){
 	document.getElementById("shop_table_info").innerHTML = "Id:" + jsonPathToValue(fruit, selected_shop_item +".id") +"\n" +"Preis:"+jsonPathToValue(fruit, selected_shop_item +".preis")+"\n" +"Wert:"+jsonPathToValue(fruit, selected_shop_item +".wert")+"\n" +"Growduration:"+jsonPathToValue(fruit, selected_shop_item +".growduration");
+}
+
+
+
+function save_game(){
+	localStorage.setItem('gold',gold);
+	localStorage.setItem('clock_value',clock_value);
+	localStorage.setItem('fields',JSON.stringify(fields));
+}
+
+function remove_game(){
+	localStorage.clear();
+}
+
+function load_game(){
+	
+	if(localStorage.getItem('clock_value')){
+		clock_value = localStorage.getItem('clock_value');
+		gold = parseInt(localStorage.getItem('gold'));
+		speicher_fields = JSON.parse(localStorage.getItem('fields'));
+		
+		for(var i = 0; i <= 9;i++){
+			fields[i].growstart = speicher_fields[i].growstart;
+			fields[i].fruit.id = speicher_fields[i].fruit.id;
+			fields[i].fruit.preis = speicher_fields[i].fruit.preis;
+			fields[i].fruit.wert = JSON.parse(speicher_fields[i].fruit.wert);
+			fields[i].fruit.growduration = speicher_fields[i].fruit.growduration;
+			
+			if(speicher_fields[i].fruit.id != "none"){
+				alle_felder[i].classList.remove("locked");
+				alle_felder[i].classList.add(speicher_fields[i].fruit.id);
+			}
+			
+		}
+		show_values();
+		show_details();
+	}else{
+		alert("No save game available.");
+	}
 }
 
 function jsonPathToValue(jsonData, path) {

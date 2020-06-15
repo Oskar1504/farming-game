@@ -43,8 +43,8 @@ var fruit = {
 		"wert":1800,
 		"growduration":320
 	},
-	"weizen":{
-		"id":"Weizen",
+	"tomate":{
+		"id":"Tomate",
 		"preis":1000,
 		"wert":2500,
 		"growduration":600
