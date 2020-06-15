@@ -41,14 +41,18 @@ function arraytest(){
 
 function store(){
 	localStorage.setItem('salat',JSON.stringify(salat));
+	localStorage.setItem('fields',JSON.stringify(fields));
 }
 
 function show(){
 	
 	ausgabe = JSON.parse(localStorage.getItem('salat'));
+	ausgabe1 = JSON.parse(localStorage.getItem('fields'));
 	
 	console.log(ausgabe);
 	console.log(ausgabe.wert);
+	console.log(ausgabe1[0].fruit.id);
+	console.log(ausgabe1[0].id);
 	alert(ausgabe.id + " " +ausgabe.preis);
 }
 
