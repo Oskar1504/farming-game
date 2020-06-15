@@ -40,7 +40,7 @@ function load_game_frage(){
 		if(r == true){
 			load_game();
 		}else{
-			alert("No savegame loaded. \nYou can load savegame in the setting menu.")
+			alert("No savegame loaded. \nYou can load savegame in the setting menu.");
 		}
 	}
 }
